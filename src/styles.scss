@@ -46,6 +46,10 @@ html {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   flex-shrink: 0;
 
+  &--disabled {
+    display: none !important;
+  }
+
   &--primary {
     background-color: $primary-color;
     color: $dark-color;
@@ -115,6 +119,7 @@ html {
   @include gray-field();
   justify-content: center;
   gap: 2rem;
+  width: 100%;
   min-height: 20vh;
   max-height: 30vh;
   padding: 2rem 0rem;
@@ -146,6 +151,11 @@ html {
     height: 30vh;
     gap: 1rem;
     overflow: scroll;
+  }
+  &__placeholder {
+    padding-top: 2rem;
+    margin-left: 0;
+    margin-right: auto;
   }
 }
 

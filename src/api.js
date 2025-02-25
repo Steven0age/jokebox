@@ -5,18 +5,14 @@ export async function getJoke() {
   return result[0].text;
 }
 
-export let allSavedJokes = ["WITZ1", "WITZ2"];
-
-export function addToLocalStorage(joke) {
+export function addToLocalStorage(jokesToSave) {
   console.log("Function addToLocalStorage hat gefeuert");
-  console.log("stringified toSave lautet:", allSavedJokes);
-  localStorage.setItem("JokesListe", JSON.stringify(allSavedJokes));
+  console.log("stringified toSave lautet:", jokesToSave);
+  localStorage.setItem("jokesList", JSON.stringify(jokesToSave));
 }
 
-// export function getFromLocalStorage() {
-//   console.log("getFromLocalStorage hat gefeuert");
-//   console.log("IM Local Storrage steht geschrieben:", localStorage.jokesList);
-//   const toLoad = localStorage.getItem("jokesList");
-//   const UnJSON = JSON.parse(toLoad);
-//   console.log("toLoad behinhaltet jetzt:", UnJSON);
-// }
+export function getFromLocalStorage() {
+  const jokesToLoad = localStorage.getItem("jokesList");
+  const UnJSON = JSON.parse(jokesToLoad);
+  return UnJSON;
+}
