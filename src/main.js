@@ -3,6 +3,7 @@ import "./normalize.scss";
 import { addToLocalStorage, getJoke, getFromLocalStorage } from "./api";
 
 document.addEventListener("DOMContentLoaded", loadSavedJokes);
+document.addEventListener("DOMContentLoaded", addListenerToDeleteBtn);
 document.getElementById("loadJoke").addEventListener("click", loadNewJoke);
 document.getElementById("saveJoke").addEventListener("click", saveJoke);
 
@@ -28,7 +29,7 @@ function loadSavedJokes() {
 function saveJoke() {
   let doubledJoke = false;
   jokesArr.forEach((i) => {
-    if (i == currentJokeEl.innerText) {
+    if (i.joke == currentJokeEl.innerText) {
       doubledJoke = true;
       alert("Nicht möglich - Du hast diesen Witz bereits gespeichert");
     }
@@ -71,30 +72,25 @@ function displayLoadedJokes() {
     newJokeList += newJoke;
   });
   savedJokesListEl.innerHTML = newJokeList;
-  addListenerToDeleteBtn();
 }
 
 function addListenerToDeleteBtn() {
-  let element = document.querySelectorAll(".button_delete");
-  console.log("element beinhaltet jetzt: ", element);
-  // element.forEach((i) => {
-  //   element.addEventListener("click", btnClicked);
-  // });
-
-  // let element = document.getElementsById("");
-  // element.addEventListener("click", deleteJoke);
-}
-
-function btnClicked() {
-  alert("BTN Clicked");
+  const container = document.querySelector(".saved-jokes__jokes-list");
+  container.addEventListener("click", (event) => {
+    let findButton = event.target.closest(".button__delete");
+    if (!findButton) {
+    } else {
+      deleteJoke(findButton.id);
+    }
+  });
 }
 
 function deleteJoke(jokeID) {
   let index = jokesArr.findIndex((i) => {
-    i.id = jokeID;
+    return i.id == jokeID;
   });
   jokesArr.splice(index, 1);
-  saveJoke();
+  addToLocalStorage(jokesArr);
   loadSavedJokes();
   displayLoadedJokes();
 }
