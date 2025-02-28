@@ -6,8 +6,6 @@ export async function getJoke() {
 }
 
 export function addToLocalStorage(jokesToSave) {
-  console.log("Function addToLocalStorage hat gefeuert");
-  console.log("stringified toSave lautet:", jokesToSave);
   localStorage.setItem("jokesList", JSON.stringify(jokesToSave));
 }
 

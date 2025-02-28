@@ -19,11 +19,13 @@ async function loadNewJoke() {
 }
 
 function loadSavedJokes() {
-  if (!getFromLocalStorage()) {
-    return;
+  let jokeFromLocalStorage = getFromLocalStorage();
+  if (!jokeFromLocalStorage || jokeFromLocalStorage.length == 0) {
+    savedJokesListEl.innerHTML = `<p class="saved-jokes__placeholder">Noch keine Witze gespeichert.</p>`;
+  } else {
+    jokesArr = jokeFromLocalStorage;
+    displayLoadedJokes();
   }
-  jokesArr = getFromLocalStorage();
-  displayLoadedJokes();
 }
 
 function saveJoke() {
