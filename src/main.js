@@ -3,7 +3,7 @@ import "./normalize.scss";
 import { addToLocalStorage, getJoke, getFromLocalStorage } from "./api";
 
 document.addEventListener("DOMContentLoaded", loadSavedJokes);
-document.addEventListener("DOMContentLoaded", addListenerToDeleteBtn);
+//document.addEventListener("DOMContentLoaded", addListenerToDeleteBtn);
 document.getElementById("loadJoke").addEventListener("click", loadNewJoke);
 document.getElementById("saveJoke").addEventListener("click", saveJoke);
 
@@ -53,7 +53,7 @@ function displayLoadedJokes() {
     <p class="single-joke__text">
       ${i.joke}
     </p>
-    <a id="${i.id}" class="button__delete">
+    <a class="button button--delete" data-joke-id="${i.id}">
       <svg
         class="single-joke__icon"
         xmlns="http://www.w3.org/2000/svg"
@@ -75,19 +75,34 @@ function displayLoadedJokes() {
   });
 
   savedJokesListEl.innerHTML = newJokeList;
+
+  addDeleteBtnListeners();
 }
 
-function addListenerToDeleteBtn() {
-  const container = document.querySelector(".saved-jokes__jokes-list");
-  container.addEventListener("click", (event) => {
-    let findButton = event.target.closest(".button__delete");
+function addDeleteBtnListeners() {
+  const buttons = document.querySelectorAll(".button--delete");
 
-    if (!findButton) {
-    } else {
-      deleteJoke(findButton.id);
-    }
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      deleteJoke(button.getAttribute("data-joke-id"));
+    });
   });
 }
+
+// Old Version - Append Listener through target.closest //
+
+// function addListenerToDeleteBtn() {
+//   return;
+//   const container = document.querySelector(".saved-jokes__jokes-list");
+//   container.addEventListener("click", (event) => {
+//     let findButton = event.target.closest(".button__delete");
+
+//     if (!findButton) {
+//     } else {
+//       deleteJoke(findButton.id);
+//     }
+//   });
+// }
 
 function deleteJoke(jokeID) {
   let index = jokesArr.findIndex((i) => {
