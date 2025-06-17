@@ -1,0 +1,18 @@
+.content-area {
+  @include devBorder();
+  @include centered-column();
+  width: 100vw;
+
+  height: 100vh;
+  margin: 0 auto;
+  padding: 0 1rem;
+  padding-top: 4rem;
+  gap: 4rem;
+
+  &__headline {
+    font-family: Rubik_Scribble, Helvetica;
+    text-align: center;
+    color: $primary-color;
+    font-size: 3rem;
+  }
+}

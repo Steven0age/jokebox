@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "Inter";
+  src: url(../assets/Inter/Inter-VariableFont_opsz.ttf);
+  //src: url(./assets/Inter/Inter-VariableFont_opsz.ttf);
+}
+
+@font-face {
+  font-family: "Rubik_Scribble";
+  src: url(../assets/Rubik_Scribble/RubikScribble-Regular.ttf);
+}
+
+html {
+  background-color: $dark-color;
+  color: $white-color;
+  font-family: Inter, Rubik_Scribble;
+}
