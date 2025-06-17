@@ -1,49 +1,13 @@
-<!DOCTYPE html>
-<html lang="de">
+<!doctype html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JokeBox - Witze App</title>
+    <title>Vite + React + TS</title>
   </head>
   <body>
-    <div class="content-area">
-      <h1 class="content-area__headline">
-        JokeBox <br />
-        die Witze App
-      </h1>
-      <div class="current-joke">
-        <p class="current-joke__joke">
-          <em>Klicke auf den Button um einen Witz zu laden !</em>
-        </p>
-        <div class="current-joke__buttons">
-          <a id="loadJoke" class="button button--primary">Neuen Witz laden</a>
-          <a
-            id="saveJoke"
-            class="button button--disabled button--with-icon button--secondary"
-          >
-            Witz speichern
-            <svg
-              class="button__icon"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
-              />
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div class="saved-jokes">
-        <h2 class="saved-jokes__headline">Gespeicherte Witze</h2>
-        <div class="saved-jokes__jokes-list"></div>
-      </div>
-    </div>
-    <script type="module" src="src/main.js"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
