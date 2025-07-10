@@ -3,7 +3,8 @@ import "./Card.scss";
 
 type CardProps = {
   children: ReactNode;
+  childClassName: string;
 };
-export default function Card({ children }: CardProps) {
-  return <div className="card">{children}</div>;
+export default function Card({ children, childClassName }: CardProps) {
+  return <div className={`card ${childClassName}`}>{children}</div>;
 }

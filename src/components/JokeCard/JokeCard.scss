@@ -1,12 +1,3 @@
-.current-joke {
-  @include devBorder();
-  @include centered-column();
+.joke-card {
   @include gray-field();
-  justify-content: center;
-  gap: 2rem;
-  width: 100%;
-  min-height: 20vh;
-  max-height: 30vh;
-  padding: 2rem 0rem;
-  flex-shrink: 0;
 }

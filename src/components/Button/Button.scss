@@ -6,6 +6,8 @@
   transition: all 0.1s ease-in-out;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   flex-shrink: 0;
+  @include centered-row();
+  gap: 0.3rem;
 
   &--primary {
     background-color: $primary-color;
@@ -32,14 +34,15 @@
 
   &--delete {
     @include centered-row();
-    background-color: $color-red;
+    color: $white-color;
+    background-color: $red-color;
+    border: 1px solid $red-color;
     margin: 0;
-    padding: 0;
     width: 2rem;
-    height: 2em;
+    height: 2rem;
 
     &:hover {
-      background-color: darken($color-red, 10);
+      background-color: darken($red-color, 10);
     }
   }
 

@@ -1,0 +1,14 @@
+.single-joke {
+  @include devBorder();
+  @include centered-row();
+  @include gray-field();
+
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  width: 100%;
+  min-height: 4rem;
+
+  &__text {
+    padding-right: 1rem;
+  }
+}

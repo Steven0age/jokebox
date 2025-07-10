@@ -1,8 +1,9 @@
 import "./Button.scss";
 
 type ButtonProps = {
-  buttonText: string;
-  buttonClass: string;
+  buttonText?: string;
+  buttonClass?: string;
+  buttonIcon?: React.ReactNode;
 };
 export default function Button({
   buttonText,
