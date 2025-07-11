@@ -1,7 +1,7 @@
 @use "./variables.scss" as *;
 
 @mixin devBorder() {
-  border: 2px solid #00ffff;
+  border: 0px solid #00ffff;
 }
 
 @mixin centered-column() {

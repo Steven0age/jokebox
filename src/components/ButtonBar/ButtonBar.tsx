@@ -13,6 +13,7 @@ export default function ButtonBar() {
         buttonClass={"button button--secondary"}
         buttonText={"Witz speichern"}
         buttonIcon={<SaveIcon />}
+        buttonDisabled={true}
       ></Button>
     </div>
   );

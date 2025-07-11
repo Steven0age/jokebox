@@ -1,9 +1,9 @@
 import "./CurrentJoke.scss";
-export default function JokeCard() {
-  return (
-    <p className="joke">
-      {" "}
-      Egal, wie gut du schläfst, Albert schläft wie Einstein.
-    </p>
-  );
+
+type JokeCardProps = {
+  JokeText: string;
+};
+
+export default function JokeCard({ JokeText }: JokeCardProps) {
+  return <p className="joke">{JokeText}</p>;
 }

@@ -2,8 +2,8 @@
   @include devBorder();
   @include centered-column();
   justify-content: center;
-  width: 80vw;
-  min-height: 20vh;
+  width: 60vw;
+  min-height: 15vh;
   max-height: 30vh;
   flex-shrink: 0;
 }
