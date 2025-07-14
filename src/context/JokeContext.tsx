@@ -1,27 +1,31 @@
 //ziel: context, der beim Click des Buttons einen Timer in der Console anzeigt; Wert des Timers ist in UseState gespeichert.
 
 import { useState, createContext, useContext } from "react";
+import { getJoke } from "../api/api";
 
 type JokeContextType = {
-  count: number;
-  updateCount: React.Dispatch<number>;
+  actualJoke: string;
+  loadNewJoke: () => Promise<void>;
 };
 
-export const JokeContext = createContext<JokeContextType>({
-  count: 0,
-  updateCount: () => {},
-});
+export const JokeContext = createContext<JokeContextType | undefined>(
+  undefined
+);
 
 export function JokeProvider({ children }: { children: React.ReactNode }) {
-  const [count, setCount] = useState(0);
+  const [actualJoke, setCurrentJoke] = useState(
+    "Klicke auf den Button, um einen Witz zu laden !"
+  );
 
-  const updateCount = () => {
-    const newCount = count + 1;
-    setCount(newCount);
-    console.log(count);
+  const loadNewJoke = async () => {
+    const newLoadedJoke = await getJoke();
+    setCurrentJoke(newLoadedJoke);
   };
 
-  const value: JokeContextType = { count, updateCount };
+  const value: JokeContextType = {
+    actualJoke,
+    loadNewJoke,
+  };
 
   return <JokeContext.Provider value={value}>{children}</JokeContext.Provider>;
 }

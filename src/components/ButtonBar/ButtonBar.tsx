@@ -4,17 +4,17 @@ import SaveIcon from "../Icons/SaveIcon";
 import { useJokes } from "../../context/JokeContext";
 
 export default function ButtonBar() {
-  const { updateCount } = useJokes();
+  const { loadNewJoke } = useJokes();
   return (
     <div className="button-bar">
       <Button
         buttonClass={"button button--primary"}
         buttonText={"Neuen Witz laden"}
-        buttonClick={updateCount}
+        buttonClick={loadNewJoke}
       ></Button>
       <Button
         buttonClass={"button button--secondary"}
-        buttonText={"Witz speichern"}
+        buttonText={"[TEST - witz laden]Witz speichern"}
         buttonIcon={<SaveIcon />}
         buttonDisabled={true}
       ></Button>
