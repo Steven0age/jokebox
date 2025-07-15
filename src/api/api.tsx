@@ -1,4 +1,7 @@
-type JokeObject = [];
+type JokeObject = {
+  id: number;
+  joke: string;
+};
 export async function getJoke() {
   let response: Response;
   response = await fetch("https://witzapi.de/api/joke/?language=de");
@@ -7,11 +10,11 @@ export async function getJoke() {
 }
 
 export function addToLocalStorage(jokesToSave: JokeObject): void {
-  localStorage.setItem("jokesList", JSON.stringify(jokesToSave));
+  localStorage.setItem("reactJokesList", JSON.stringify(jokesToSave));
 }
 
 export function getFromLocalStorage(): JokeObject {
-  const jokesToLoad = localStorage.getItem("jokesList");
+  const jokesToLoad = localStorage.getItem("reactJokesList");
   if (!jokesToLoad) {
     return [];
   }

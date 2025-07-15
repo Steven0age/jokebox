@@ -4,7 +4,7 @@ import SaveIcon from "../Icons/SaveIcon";
 import { useJokes } from "../../context/JokeContext";
 
 export default function ButtonBar() {
-  const { loadNewJoke, currentJoke: actualJoke } = useJokes();
+  const { loadNewJoke, currentJoke: actualJoke, saveCurrentJoke } = useJokes();
   return (
     <div className="button-bar">
       <Button
@@ -17,6 +17,7 @@ export default function ButtonBar() {
         buttonText={"Witz speichern"}
         buttonIcon={<SaveIcon />}
         buttonDisabled={!actualJoke}
+        buttonClick={saveCurrentJoke}
       ></Button>
     </div>
   );
