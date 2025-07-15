@@ -4,7 +4,7 @@ import { useState, createContext, useContext } from "react";
 import { getJoke } from "../api/api";
 
 type JokeContextType = {
-  actualJoke: string | null;
+  currentJoke: string | null;
   loadNewJoke: () => Promise<void>;
 };
 
@@ -21,7 +21,7 @@ export function JokeProvider({ children }: { children: React.ReactNode }) {
   };
 
   const value: JokeContextType = {
-    actualJoke,
+    currentJoke: actualJoke,
     loadNewJoke,
   };
 

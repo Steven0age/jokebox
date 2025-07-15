@@ -4,7 +4,7 @@ import SaveIcon from "../Icons/SaveIcon";
 import { useJokes } from "../../context/JokeContext";
 
 export default function ButtonBar() {
-  const { loadNewJoke, actualJoke } = useJokes();
+  const { loadNewJoke, currentJoke: actualJoke } = useJokes();
   return (
     <div className="button-bar">
       <Button

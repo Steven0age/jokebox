@@ -5,7 +5,7 @@ import ButtonBar from "../ButtonBar/ButtonBar";
 import { useJokes } from "../../context/JokeContext";
 
 export default function JokeCard() {
-  const { actualJoke } = useJokes();
+  const { currentJoke: actualJoke } = useJokes();
 
   return (
     <Card childClassName={"joke-card"}>
