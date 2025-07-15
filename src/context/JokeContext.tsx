@@ -4,7 +4,7 @@ import { useState, createContext, useContext } from "react";
 import { getJoke } from "../api/api";
 
 type JokeContextType = {
-  actualJoke: string;
+  actualJoke: string | null;
   loadNewJoke: () => Promise<void>;
 };
 
@@ -13,9 +13,7 @@ export const JokeContext = createContext<JokeContextType | undefined>(
 );
 
 export function JokeProvider({ children }: { children: React.ReactNode }) {
-  const [actualJoke, setCurrentJoke] = useState(
-    "Klicke auf den Button, um einen Witz zu laden !"
-  );
+  const [actualJoke, setCurrentJoke] = useState(null);
 
   const loadNewJoke = async () => {
     const newLoadedJoke = await getJoke();

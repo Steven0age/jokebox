@@ -9,7 +9,11 @@ export default function JokeCard() {
 
   return (
     <Card childClassName={"joke-card"}>
-      <CurrentJoke JokeText={actualJoke} />
+      <CurrentJoke
+        JokeText={
+          actualJoke ?? "Klicke auf den Button, um einen Witz zu laden !"
+        }
+      />
 
       <ButtonBar />
     </Card>
