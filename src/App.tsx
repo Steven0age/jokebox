@@ -21,8 +21,10 @@ export default App;
         <JokeCard>
           <Card>
             <CurrentJoke></CurrentJoke>
-            <Button></Button>
-            <Button></Button>
+            <ButtonBar>
+              <Button></Button>
+              <Button></Button>
+            </ButtonBar>
           </Card>
         </JokeCard>
 

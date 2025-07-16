@@ -4,11 +4,15 @@ import { useEffect } from "react";
 import { useJokes } from "../../context/JokeContext";
 
 export default function SavedJokesList() {
-  const { loadSavedJokes } = useJokes();
+  const { loadSavedJokes, savedJokes } = useJokes();
 
   useEffect(() => {
     loadSavedJokes();
   }, []);
+
+  useEffect(() => {
+    renderSavedJokeItems();
+  }, [savedJokes]);
 
   return (
     <div className="saved-jokes saved-jokes__jokes-list">
