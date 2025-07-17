@@ -6,8 +6,9 @@ type JokeContextType = {
   currentJoke: string | null;
   loadNewJoke: () => Promise<void>;
   loadSavedJokes: () => void;
-  saveCurrentJoke: () => void;
+  // saveCurrentJoke: () => void;
   savedJokes: JokeArray;
+  deleteJoke: (id: number) => void;
 };
 
 export const JokeContext = createContext<JokeContextType | undefined>(
@@ -23,42 +24,47 @@ export function JokeProvider({ children }: { children: React.ReactNode }) {
     setCurrentJoke(newLoadedJoke);
   };
 
-  const saveCurrentJoke = () => {
-    console.log("saveCurrentJoke gefeuert");
-    console.log("SavedJokes1 =", savedJokes);
+  // const saveCurrentJoke = () => {
+  //   console.log("saveCurrentJoke gefeuert");
+  //   console.log("SavedJokes1 =", savedJokes);
 
-    let newList: JokeArray;
-    newList = [...savedJokes, { id: 42, joke: currentJoke }];
+  //   let newArray: JokeArray;
+  //   newArray = [...savedJokes, { id: 42, joke: currentJoke }];
 
-    console.log("SavedJokes2 =", savedJokes);
+  //   console.log("SavedJokes2 =", savedJokes);
 
-    setSavedJokes(newList);
+  //   setSavedJokes(newList);
 
-    console.log("SavedJokes3 =", savedJokes);
-    addToLocalStorage(savedJokes);
-  };
+  //   console.log("SavedJokes3 =", savedJokes);
+  //   addToLocalStorage(savedJokes);
+  // };
 
   const loadSavedJokes = () => {
-    console.log("LoadSavedJokes gefeuert");
     const getData = getFromLocalStorage();
     if (!getData || getData.length == 0) {
       return;
     } else {
       setSavedJokes(getData);
-      console.log("getData lautet:", getData);
     }
   };
 
-  useEffect(() => {
-    console.log("savedJokes State lautet nun:", savedJokes);
-  }, [savedJokes]);
+  const deleteJoke = (id: number) => {
+    let index = savedJokes.findIndex((i) => {
+      return i.id == id;
+    });
+
+    let newArray = [...savedJokes];
+    newArray.splice(index, 1);
+    setSavedJokes(newArray);
+  };
 
   const value: JokeContextType = {
     currentJoke,
     loadNewJoke,
     loadSavedJokes,
-    saveCurrentJoke,
+    // saveCurrentJoke,
     savedJokes,
+    deleteJoke,
   };
 
   return <JokeContext.Provider value={value}>{children}</JokeContext.Provider>;

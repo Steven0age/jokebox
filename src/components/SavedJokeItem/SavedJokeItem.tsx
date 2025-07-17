@@ -2,19 +2,22 @@ import Button from "../Button/Button";
 import DeleteIcon from "../Icons/DeleteIcon";
 import "./SavedJokeItem.scss";
 
-type JokeItemProps = {
+type SavedJokeItemProps = {
   JokeText: string;
-  JokeID: number;
+  onDelete: () => void;
 };
 
-export default function SavedJokeItem({ JokeText, JokeID }: JokeItemProps) {
+export default function SavedJokeItem({
+  JokeText,
+  onDelete,
+}: SavedJokeItemProps) {
   return (
     <div className="single-joke">
       <p className="single-joke__text">{JokeText}</p>
       <Button
         buttonClass={"button button--delete"}
-        buttonID={JokeID}
         buttonIcon={<DeleteIcon />}
+        buttonClick={onDelete}
       ></Button>
     </div>
   );
