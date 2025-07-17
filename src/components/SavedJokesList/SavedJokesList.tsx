@@ -10,19 +10,11 @@ export default function SavedJokesList() {
     loadSavedJokes();
   }, []);
 
-  useEffect(() => {
-    renderSavedJokeItems();
-  }, [savedJokes]);
-
   return (
     <div className="saved-jokes saved-jokes__jokes-list">
-      <SavedJokeItem JokeItemText={"gespeicherter Witz 1"} />
-      <SavedJokeItem JokeItemText={"gespeicherter Witz 2"} />
-      <SavedJokeItem JokeItemText={"gespeicherter Witz 3"} />
-      <SavedJokeItem JokeItemText={"gespeicherter Witz 4"} />
-      <SavedJokeItem JokeItemText={"gespeicherter Witz 5"} />
-      <SavedJokeItem JokeItemText={"gespeicherter Witz 6"} />
-      <SavedJokeItem JokeItemText={"gespeicherter Witz 7"} />
+      {savedJokes.map((i) => (
+        <SavedJokeItem key={i.id} JokeText={i.joke} JokeID={i.id} />
+      ))}
     </div>
   );
 }
