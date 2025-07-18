@@ -1,0 +1,20 @@
+.saved-jokes {
+  width: 100%;
+
+  &__headline {
+    font-family: Rubik_Scribble, Helvetica;
+    padding-bottom: 1rem;
+  }
+
+  &__jokes-list {
+    @include centered-column();
+    gap: 1rem;
+    overflow: scroll;
+  }
+
+  &__placeholder {
+    padding-top: 2rem;
+    margin-left: 0;
+    margin-right: auto;
+  }
+}
