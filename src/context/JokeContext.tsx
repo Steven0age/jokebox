@@ -29,6 +29,17 @@ export function JokeProvider({ children }: { children: React.ReactNode }) {
   };
 
   const saveCurrentJoke = () => {
+    if (!currentJoke) {
+      return;
+    }
+
+    savedJokes.forEach((i) => {
+      if (i.joke == currentJoke) {
+        alert("Nicht möglich - Du hast diesen Witz bereits gespeichert");
+        return;
+      }
+    });
+
     const newId = nextFreeID(savedJokes);
 
     let newArray: JokeArray;
