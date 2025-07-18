@@ -1,12 +1,13 @@
 import { useState, createContext, useContext, useEffect } from "react";
 import { addToLocalStorage, getJoke, getFromLocalStorage } from "../api/api";
 import type { JokeArray } from "../types/joke";
+import { nextFreeID } from "../utils/idUtils";
 
 type JokeContextType = {
   currentJoke: string | null;
   loadNewJoke: () => Promise<void>;
   loadSavedJokes: () => void;
-  // saveCurrentJoke: () => void;
+  saveCurrentJoke: () => void;
   savedJokes: JokeArray;
   deleteJoke: (id: number) => void;
 };
@@ -18,26 +19,22 @@ export const JokeContext = createContext<JokeContextType | undefined>(
 export function JokeProvider({ children }: { children: React.ReactNode }) {
   const [currentJoke, setCurrentJoke] = useState(null);
   const [savedJokes, setSavedJokes] = useState<JokeArray>([]);
+  useEffect(() => {
+    addToLocalStorage(savedJokes);
+  }, [savedJokes]);
 
   const loadNewJoke = async () => {
     const newLoadedJoke = await getJoke();
     setCurrentJoke(newLoadedJoke);
   };
 
-  // const saveCurrentJoke = () => {
-  //   console.log("saveCurrentJoke gefeuert");
-  //   console.log("SavedJokes1 =", savedJokes);
+  const saveCurrentJoke = () => {
+    const newId = nextFreeID(savedJokes);
 
-  //   let newArray: JokeArray;
-  //   newArray = [...savedJokes, { id: 42, joke: currentJoke }];
-
-  //   console.log("SavedJokes2 =", savedJokes);
-
-  //   setSavedJokes(newList);
-
-  //   console.log("SavedJokes3 =", savedJokes);
-  //   addToLocalStorage(savedJokes);
-  // };
+    let newArray: JokeArray;
+    newArray = [...savedJokes, { id: newId, joke: currentJoke }];
+    setSavedJokes(newArray);
+  };
 
   const loadSavedJokes = () => {
     const getData = getFromLocalStorage();
@@ -62,7 +59,7 @@ export function JokeProvider({ children }: { children: React.ReactNode }) {
     currentJoke,
     loadNewJoke,
     loadSavedJokes,
-    // saveCurrentJoke,
+    saveCurrentJoke,
     savedJokes,
     deleteJoke,
   };
