@@ -1,8 +1,8 @@
 .card {
-  @include devBorder();
   @include centered-column();
   justify-content: center;
-  width: 60vw;
+  width: 100%;
+  padding: 2rem 0rem;
   min-height: 15vh;
   max-height: 30vh;
   flex-shrink: 0;

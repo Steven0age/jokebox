@@ -1,5 +1,4 @@
 .content-area {
-  @include devBorder();
   @include centered-column();
   width: 100vw;
 

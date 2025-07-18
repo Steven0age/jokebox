@@ -1,5 +1,4 @@
 .single-joke {
-  @include devBorder();
   @include centered-row();
   @include gray-field();
 
